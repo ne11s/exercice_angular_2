@@ -1,16 +1,19 @@
-<h3>{{name}}</h3>
-<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{index}}.png" alt="Image du pokemone">
-<p>Poids : <br/> {{poids}}kg</p>
-<p>Taille : <br/> {{tailleCm}}cm</p>
+<h3>{{ name }}</h3>
+<img src="{{src}}" alt="Image du pokemone">
+<p>Poids : <br/> {{poids}}</p>
+<p>Taille : <br/> {{tailleCm}}</p>
 <p>Type :</p>
 <ul>
-    <li></li>
+    @for (item of type; track $index) {
+        
+        <li>{{item.type.name}}</li> 
+    }
 </ul>
 <p>Attaque :</p>
 <ul>
-    <li>attaque 1</li>
-    <li>attaque 2</li>
-    <li>attaque 3</li>
-    <li>attaque 4</li>
+    @for (abili of abilityes; track $index) {
+        <li>{{abili.ability.name}}</li>
+    }
 </ul>
-<p>index : {{index}}</p>
+
+<p>index : {{id}}</p>

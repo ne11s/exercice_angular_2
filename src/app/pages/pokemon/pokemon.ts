@@ -9,8 +9,11 @@ import { Button } from "../../components/button/button";
   styleUrl: './pokemon.css'
 })
 export class Pokemon {
-  index : number = 1
+  index : number = 1;
   handleData(data:number):void {
+    console.log(data); 
     this.index = data
-  }
+  };
+  
+  
 }

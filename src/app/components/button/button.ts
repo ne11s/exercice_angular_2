@@ -15,6 +15,6 @@ export class Button {
     } else {
       this.index = this.index > 1 ? this.index-1:1
     }
-    this.sendIndex.emit(this.index)
+    this.sendIndex.emit(this.index);
   }
 }
