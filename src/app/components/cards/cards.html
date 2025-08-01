@@ -1,19 +1,25 @@
-<h3>{{ name }}</h3>
-<img src="{{src}}" alt="Image du pokemone">
-<p>Poids : <br/> {{poids}}</p>
-<p>Taille : <br/> {{tailleCm}}</p>
-<p>Type :</p>
-<ul>
-    @for (item of type; track $index) {
-        
-        <li>{{item.type.name}}</li> 
-    }
-</ul>
-<p>Attaque :</p>
-<ul>
-    @for (abili of abilityes; track $index) {
-        <li>{{abili.ability.name}}</li>
-    }
-</ul>
+<div >
+    <h3>{{ name }}</h3>
+    <img src="{{src}}" alt="Image du pokemone">
+    <p>Poids : <br/> {{poids}}</p>
+    <div>
+        <p>Taille : <br/> {{tailleCm}}</p>
+    </div>
+    <p>Type :</p>
+    <ul>
+        @for (item of type; track $index) {
+            
+            <li>{{item.type.name}}</li> 
+        }
+    </ul>
+    <p>Attaque :</p>
+    <div class="attaque">
+    <ul>
+        @for (abili of abilityes; track $index) {
+            <li>{{abili.move.name}}</li>
+        }
+    </ul>
+    </div>
+    <p>index : {{id}}</p>
 
-<p>index : {{id}}</p>
+</div>

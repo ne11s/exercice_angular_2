@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ApiServices } from '../../utils/services/api-services';
 import { Input } from '@angular/core';
-import { Pokemon } from '../../pages/pokemon/pokemon';
 
 @Component({
   selector: 'app-cards',
@@ -12,7 +11,7 @@ import { Pokemon } from '../../pages/pokemon/pokemon';
 
 
 
-export class Cards implements OnInit, OnDestroy {
+export class Cards implements  OnChanges{
   
   constructor(private apiService : ApiServices,private cdr: ChangeDetectorRef){};
   //@Input() index! : number 
@@ -34,15 +33,15 @@ get index(): number {
   poids : number = 0;
   src : string = ""
   tailleCm : number = 100;
-  type : any[] = ["normal"]; 
-  abilityes : any[] = ["vive attaque","queue de fer","vol"];
-  changeData(name:string , taillecm:number,index:number,types:string[]):void{
-        this.name = name;
-        this.tailleCm = taillecm;
-        this.id = index;
-        this.type = types;
-        
-  }
+  type : any[] = [{
+    type: {
+      name:"string"
+    }
+  }]; 
+  abilityes : any[] = [{ability:{
+    name:""
+  }}];
+  
 
   pokemonget(id: number):void{
     this.apiService.getPosts(id).subscribe({
@@ -53,7 +52,7 @@ get index(): number {
         this.tailleCm = data.height;
         this.id = data.id;
         this.type = data.types;
-        this.abilityes= data.abilities;
+        this.abilityes= data.moves;
         this.cdr.detectChanges();
       },
       error: err => console.error("Erreur card.ts" + err )
@@ -64,16 +63,13 @@ get index(): number {
     
   
 
-  ngOnInit(): void {
+  /* ngOnInit(): void {
     this.pokemonget(this.index)
-  }
+  } */
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
       if (changes['index']) {
-        this.pokemonget(this.index)
+        this.pokemonget(changes['index'].currentValue)
       }
-  }
-  ngOnDestroy(): void {
-    console.log("On destroy");
   }
 }

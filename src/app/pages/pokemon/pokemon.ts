@@ -11,7 +11,6 @@ import { Button } from "../../components/button/button";
 export class Pokemon {
   index : number = 1;
   handleData(data:number):void {
-    console.log(data); 
     this.index = data
   };
   
